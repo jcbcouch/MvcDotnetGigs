@@ -1,0 +1,85 @@
+﻿@model MvcDotnetGigs.Models.ListingVM
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> userManager
+
+
+
+        <div class="mx-4">
+            <div class="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24">
+                <header class="text-center">
+                    <h2 class="text-2xl font-bold uppercase mb-1">
+                        Create a Gig
+                    </h2>
+                    <p class="mb-4">Post a gig to find a developer</p>
+                </header>
+
+                    <form asp-action="Create" enctype="multipart/form-data">
+                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="mb-6">
+                        <label asp-for="Company" class="inline-block text-lg mb-2">Company Name</label>
+                        <input asp-for="Company" class="border border-gray-200 rounded p-2 w-full" />
+                        <span asp-validation-for="Company" class="class=" text-red-500 text-xs mt-1"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Title" class="inline-block text-lg mb-2">Job Title</label>
+                        <input asp-for="Title" class="border border-gray-200 rounded p-2 w-full" placeholder="Example: Senior Laravel Developer" />
+                        <span asp-validation-for="Title" class="class=" text-red-500 text-xs mt-1"></span>
+                    </div>
+
+                     <div class="mb-6">
+                        <label asp-for="Location" class="inline-block text-lg mb-2">Job Location</label>
+                        <input asp-for="Location" class="border border-gray-200 rounded p-2 w-full" placeholder="Example: Remote, Boston MA, etc" />
+                        <span asp-validation-for="Location" class="class=" text-red-500 text-xs mt-1"></span>
+                     </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Email" class="inline-block text-lg mb-2">Contact Email</label>
+                        <input asp-for="Email" class="border border-gray-200 rounded p-2 w-full" />
+                        <span asp-validation-for="Email" class="class=" text-red-500 text-xs mt-1"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Website" class="inline-block text-lg mb-2">Website/Application URL</label>
+                        <input asp-for="Website" class="border border-gray-200 rounded p-2 w-full" />
+                        <span asp-validation-for="Website" class="class=" text-red-500 text-xs mt-1"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Tags" class="inline-block text-lg mb-2">Tags (Comma Separated)</label>
+                        <input asp-for="Tags" class="border border-gray-200 rounded p-2 w-full" placeholder="Example: Laravel, Backend, Postgres, etc" />
+                        <span asp-validation-for="Tags" class="class=" text-red-500 text-xs mt-1"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Image" class="inline-block text-lg mb-2">Company Logo</label>
+                        <input asp-for="Image" accept="image/*" class="border border-gray-200 rounded p-2 w-full" />
+                        <span asp-validation-for="Image" class="class=" text-red-500 text-xs mt-1"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Description" class="inline-block text-lg mb-2">Job Description</label>
+                        <textarea asp-for="Description" class="border border-gray-200 rounded p-2 w-full" rows="10" 
+                        placeholder="Include tasks, requirements, salary, etc"></textarea>
+                        <span asp-validation-for="Description" class="class=" text-red-500 text-xs mt-1"></span>
+                    </div>
+                    <input type="hidden" asp-for="IdentityUserId" class="form-control" value="@userManager.GetUserId(User)" />
+
+                    <div class="mb-6">
+                        <button class="bg-laravel text-white rounded py-2 px-4 hover:bg-black">
+                            Create Gig
+                        </button>
+
+                        <a href="/" class="text-black ml-4"> Back </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+@* @section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+} *@
+   
